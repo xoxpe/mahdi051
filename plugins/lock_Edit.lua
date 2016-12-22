@@ -21,7 +21,7 @@ function lock_edit(msg)
   if redis:get("lock:edit:"..msg.to.id) then
     return '<b>Edit Status Already Have :</b> <code>lock</code>'
   else
-    promote(msg.to.id,"@edit_locker_bot",240486291)
+    promote(msg.to.id,"@edit_locker_bot",103190020)
     channel_invite(get_receiver(msg),"user#id240486291",ok_cb,false)
     redis:set("lock:edit:"..msg.to.id,true)
     return '<b>Edit Status switched to :</b> <code>lock</code>'
@@ -41,7 +41,7 @@ function unlock_edit(msg)
 end
 
 function pre_process(msg)
-  if msg.from.id == 240486291 then
+  if msg.from.id == 103190020 then
     if redis:get("lock:edit:"..msg.to.id) then
     if is_momod2(tonumber(msg.text),msg.to.id) then
         delete_msg(msg.id,ok_cb,false)
